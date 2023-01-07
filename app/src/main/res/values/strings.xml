@@ -39,6 +39,7 @@
     <string name="account_favorites_count_title">Favorites count : </string>
     <string name="log_out_button">Log out</string>
 
-    <string name="content_description">Fuck this warning</string>
+
+    <string name="content_description">Film Image</string>
 
 </resources>
