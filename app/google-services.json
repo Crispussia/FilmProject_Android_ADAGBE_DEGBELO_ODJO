@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1047932061694",
+    "project_id": "gestion-de-film",
+    "storage_bucket": "gestion-de-film.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047932061694:android:dce4ee2d71a3d31713a2af",
+        "android_client_info": {
+          "package_name": "fi.eilco.android_project_gestion_film"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047932061694-bl7tbcv4na92pniiqtfcd9n1s5krhsl7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fi.eilco.android_project_gestion_film",
+            "certificate_hash": "845321cfbf3cdbf2dd6613681437d82d28f1c932"
+          }
+        },
+        {
+          "client_id": "1047932061694-s2q5i0pvfg9omlabf288194p80j3opct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlWNTRfJ1hUBc-IXxL3iGzFghxzki5WSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047932061694-s2q5i0pvfg9omlabf288194p80j3opct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
