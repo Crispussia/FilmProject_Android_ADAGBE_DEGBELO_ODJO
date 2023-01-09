@@ -5,5 +5,5 @@ class UserModel (
     var username: String="Crispussia",
     var password:String="Cris@2000",
     //var liked: List<Int> = listOf()
-    var liked: List<Int> = listOf()
+    var liked: MutableList<Int> = mutableListOf()
 )

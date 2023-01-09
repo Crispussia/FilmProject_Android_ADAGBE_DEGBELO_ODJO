@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -13,7 +14,7 @@ import fi.eilco.android_project_gestion_film.UserRepository.Singleton.databaseRe
 import fi.eilco.android_project_gestion_film.UserRepository.Singleton.user
 
 
-class UserRepository(private var context:Activity, ) {
+class UserRepository(private var context:Activity ) {
     //accéder à ces deux valeurs sur toutes l'application sans vider à chaque chargement
     object Singleton {
             //se connecter à la référence plante
@@ -74,7 +75,7 @@ class UserRepository(private var context:Activity, ) {
                         /*val intentMain = Intent(context, MainActivity::class.java)
                         intentMain.apply {
 
-                            startActivity(context)
+                            startActivity(this)
                         }*/
                     } else {
                         Toast.makeText(context, "Wrong Password", Toast.LENGTH_SHORT)
@@ -93,6 +94,32 @@ class UserRepository(private var context:Activity, ) {
             }
 
         })
+    }
+    //mettre à jour un objet plante en bdd
+    fun getLiked(user:UserModel,usernameText: String) {
+
+        Log.d("Log","dfgh")
+        //absorber les données depuis la databaseRef->liste des plantes
+        databaseRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var liked = snapshot.child(usernameText).child("liked").getValue().toString()
+                //Log.d("Log",liked)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+
+    }
+
+    //mettre à jour un objet plante en bdd
+    fun updateUser(user:UserModel,usernameText: String){
+        databaseRef.child(usernameText).setValue(user)
     }
 
 }
