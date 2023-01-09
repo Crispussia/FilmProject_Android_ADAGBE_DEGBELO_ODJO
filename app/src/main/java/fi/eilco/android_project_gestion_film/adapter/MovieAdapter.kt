@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fi.eilco.android_project_gestion_film.MainActivity
 import fi.eilco.android_project_gestion_film.R
+import fi.eilco.android_project_gestion_film.fragments.GenreFragment
 
-class MovieAdapter (private val context: MainActivity, private  val movieList:List<MovieModel>): RecyclerView.Adapter<MovieAdapter.ViewHolder> (){
+class MovieAdapter(private val context: MainActivity, private val movieList:List<MovieModel>): RecyclerView.Adapter<MovieAdapter.ViewHolder> (){
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val movieImage=view.findViewById<ImageView>(R.id.image_item)
-        val movieName=view.findViewById<TextView>(R.id.movie_name)
-        val movieRate=view.findViewById<TextView>(R.id.home_page_movie_rate)
-        val movieVotes=view.findViewById<TextView>(R.id.home_page_movie_vote)
+        val movieName=view.findViewById<TextView>(R.id.item_movie_title)
+        val movieRate=view.findViewById<TextView>(R.id.item_movie_rate)
+        val movieVotes=view.findViewById<TextView>(R.id.item_movie_votes)
 
 
     }
@@ -37,8 +38,8 @@ class MovieAdapter (private val context: MainActivity, private  val movieList:Li
         Glide.with(context).load(Uri.parse("https://image.tmdb.org/t/p/original/"+currentMovie.poster_path)).into(holder.movieImage)
 
         holder.movieName.text=currentMovie.original_title
-        holder.movieRate.text=holder.movieRate.text.toString()+currentMovie.rate
-        holder.movieVotes.text=holder.movieVotes.text.toString()+currentMovie.votes
+        holder.movieRate.text=holder.movieRate.text.toString()+currentMovie.vote_average
+        holder.movieVotes.text=holder.movieVotes.text.toString()+currentMovie.vote_count
 
 
 

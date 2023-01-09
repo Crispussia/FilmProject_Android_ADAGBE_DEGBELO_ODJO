@@ -4,15 +4,15 @@
     <!-- Page d'accueil-->
     <string name="home_page_title">Movie Wiki </string>
     <string name="home_page_last_movie_section">Dernière plantes</string>
-    <string name="home_page_movie_name">Nom du film</string>
+    <string name="item_movie_title">Nom du film</string>
     <string name="home_page_movie_genre">Action</string>
 
-    <string name="home_page_movie_rate">Rates : </string>
-    <string name="home_page_movie_vote">Votes : </string>
+    <string name="item_movie_rate">Rates : </string>
+    <string name="item_movie_votes">Votes : </string>
 
     <!-- Page d'un film-->
     <string name="Movie_page_title">Nom du film</string>
-    <string name="Movie_page_overview"> Overview</string>
+    <string name="content_description"> Overview</string>
     <string name="Movie_page_popularity"> Popularity : </string>
     <string name="Movie_page_release_date"> Release date : </string>
     <string name="Movie_page_vote_average"> Vote average : </string>

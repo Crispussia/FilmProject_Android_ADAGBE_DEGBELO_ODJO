@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,38 +41,50 @@ class HomeFragment ( private val context: MainActivity): Fragment() {
     }
 
     private fun getData(recyclerView: RecyclerView) {
-        Log.d("recycler : ","gggggggggggggggggggggggggg")
 
-        val client = OkHttpClient()
-        val request =Request.Builder()
-            .url("https://api.themoviedb.org/3/discover/movie?api_key=2174d146bb9c0eab47529b2e77d6b526&with_genres=28")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
+        var genreId: Int = 0
+        var genreName: String = ""
+        setFragmentResultListener("secret") { key, bundle ->
+            genreId = bundle.getInt("genre_id")
 
-                e.printStackTrace()
+            setFragmentResultListener("secret2") { key, bundle ->
+                genreName = bundle.getString("genre_name").toString()
+
+                Log.d("hhjjjjjjjjjjjj", "eeeeeeeemmmmmmmmmmmmmmmm " + genreId.toString())
+                Log.d("hhjjjjjjjjjjjj", "eeeeeeeemmmmmmmmmmmmmmmm " + genreName)
+
+
+                val client = OkHttpClient()
+                val request = Request.Builder()
+                    .url("https://api.themoviedb.org/3/discover/movie?api_key=2174d146bb9c0eab47529b2e77d6b526&with_genres=" + genreId.toString())
+                    .build()
+                client.newCall(request).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+
+                        e.printStackTrace()
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        val body = response.body?.string()
+                        println(body)
+                        val gson = GsonBuilder().create()
+                        val data = gson.fromJson(body, RootModel::class.java)
+                        Log.d("hhjjjjjjjjjjjj", "eeeeeeeeeeeeeeeeeeeeeee")
+
+                        //Set adapter and recycler view on UI with values get from http request
+                        activity?.runOnUiThread {
+                            recyclerView.layoutManager = LinearLayoutManager(context)
+
+                            val adapter = MovieAdapter(context, data.results)
+                            recyclerView.adapter = adapter
+                        }
+
+                    }
+
+                })
+
+
             }
-
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string()
-                println(body)
-                val gson = GsonBuilder().create()
-                val data = gson.fromJson(body, RootModel::class.java)
-                Log.d("hhjjjjjjjjjjjj","eeeeeeeeeeeeeeeeeeeeeee")
-                Log.d("11111111111",data.results[0].original_title.toString())
-
-                //Set adapter and recycler view on UI with values get from http request
-                activity?.runOnUiThread {
-                    recyclerView.layoutManager=LinearLayoutManager(context)
-
-                    val adapter = MovieAdapter(context, data.results)
-                    recyclerView.adapter = adapter
-                }
-                Log.d("hhjjjjjjjjjjj1111111111",data.results.toString())
-
-            }
-
-        })
-
+        }
     }
 }
