@@ -1,5 +1,6 @@
 package fi.eilco.android_project_gestion_film
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -14,6 +15,7 @@ class Register : AppCompatActivity() {
         val conpassword=findViewById<TextView>(R.id.confirm_password_input)
         //charger notre plant repository
         val registerButton=findViewById<TextView>(R.id.registerBtn)
+        val LoginNowButton=findViewById<TextView>(R.id.loginNow)
 
 
         registerButton.setOnClickListener{
@@ -34,10 +36,16 @@ class Register : AppCompatActivity() {
             }else {
                 //sending data to firebase
                 //we use username as unique identity of every user
-                repository.getUsers(usernameText,passwordText)
+                repository.createUsers(usernameText,passwordText)
 
             }
 
+        }
+        LoginNowButton.setOnClickListener{
+            val intentLogin = Intent(this, Login::class.java)
+            intentLogin.apply {
+                startActivity(this)
+            }
         }
 
 
