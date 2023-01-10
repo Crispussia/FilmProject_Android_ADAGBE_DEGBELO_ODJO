@@ -72,6 +72,7 @@ class UserRepository(private var context:Activity ) {
                             "Successfull Logged in",
                             Toast.LENGTH_SHORT
                         ).show()
+                        
                         /*val intentMain = Intent(context, MainActivity::class.java)
                         intentMain.apply {
 
@@ -113,6 +114,15 @@ class UserRepository(private var context:Activity ) {
             }
 
         })
+
+
+    }
+    //mettre à jour un objet plante en bdd
+    fun testLiked(usernameText: String): Task<DataSnapshot> {
+
+        Log.d("Log","dfgh")
+        var liked = databaseRef.child(usernameText).child("liked").get()
+        return liked
 
 
     }

@@ -40,7 +40,8 @@ class MovieAdapter(private val context: MainActivity, private val movieList:List
         //recuperer le repo
         val repo= UserRepository(context)
 
-        repo.getLiked(user,"Crispussia")
+        val user_object=repo.testLiked("Crispussia")
+        //Log.d("Crisp_obj",user_object)
 
 
         //var liked=repo.getLiked(user,"Crispussia")
@@ -65,6 +66,7 @@ class MovieAdapter(private val context: MainActivity, private val movieList:List
             if (holder.liked.isNullOrEmpty()) {
                 holder.likeIcon.setImageResource(R.drawable.ic_like)
                 holder.liked.add(currentMovie.id)
+
                 Log.d("Crisp",holder.liked.toString())
                 user.liked=holder.liked
                 Log.d("Crisp",user.liked.toString())
