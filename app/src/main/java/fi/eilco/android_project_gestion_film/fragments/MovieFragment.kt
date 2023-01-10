@@ -23,7 +23,7 @@ class MovieFragment (private val  context: MainActivity): Fragment() {
         val view = inflater?.inflate(R.layout.fragment_film, container, false)
 
         //creer une liste qui va stocker ces plantes
-        val movieList= arrayListOf<MovieModel>()
+        val movieList = ArrayList<MovieModel>()
         //enregistrer une première plante dans notre liste
         movieList.add(
             MovieModel(
@@ -61,7 +61,7 @@ class MovieFragment (private val  context: MainActivity): Fragment() {
 
 
         val verticalRecyclerView = view?.findViewById<RecyclerView>(R.id.vertical_recycler_view)
-        verticalRecyclerView?.adapter = MovieAdapter(context,movieList)
+        //verticalRecyclerView?.adapter = MovieAdapter(context, movieList)
 
         return view
     }

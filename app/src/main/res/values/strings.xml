@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Movie Wiki</string>
 
-<<<<<<< HEAD
+
     <!-- Splash Page -->
     <string name="app_description">What do you want to know about movies ?</string>
     <string name="get_started_button">Get started</string>
@@ -40,18 +40,12 @@
     <string name="account_favorites_count_title">Favorites count : </string>
     <string name="log_out_button">Log out</string>
 
-
-    <string name="content_description">Film Image</string>
-
 =======
     <!-- Page d'accueil-->
     <string name="home_page_title">Movie Wiki </string>
     <string name="home_page_last_movie_section">Dernière plantes</string>
-    <string name="item_movie_title">Nom du film</string>
-    <string name="home_page_movie_genre">Action</string>
 
-    <string name="item_movie_rate">Rates : </string>
-    <string name="item_movie_votes">Votes : </string>
+    <string name="home_page_movie_genre">Action</string>
 
     <!-- Page d'un film-->
     <string name="Movie_page_title">Nom du film</string>

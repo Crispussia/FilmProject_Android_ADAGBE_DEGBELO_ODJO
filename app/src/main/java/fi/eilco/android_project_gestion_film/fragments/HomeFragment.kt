@@ -1,38 +1,11 @@
 package fi.eilco.android_project_gestion_film.fragments
 
 import android.os.Bundle
-<<<<<<< HEAD
-=======
 import android.util.Log
->>>>>>> a2eb95640bd3bb054bb905acf93d682706ad9875
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-<<<<<<< HEAD
-import androidx.recyclerview.widget.RecyclerView
-import fi.eilco.android_project_gestion_film.R
-import fi.eilco.android_project_gestion_film.adapter.MovieAdapter
-
-class HomeFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater?.inflate(R.layout.fragment_home, container, false)
-
-        // récupérer le recyclerview
-        val verticalRecyclerView = view?.findViewById<RecyclerView>(R.id.vertical_recycler_view)
-        if (verticalRecyclerView != null) {
-            verticalRecyclerView.adapter = MovieAdapter()
-            print("Different de nulll")
-        }
-        return view
-    }
-}
-=======
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -115,4 +88,3 @@ class HomeFragment ( private val context: MainActivity): Fragment() {
         }
     }
 }
->>>>>>> a2eb95640bd3bb054bb905acf93d682706ad9875

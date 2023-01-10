@@ -11,24 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-<<<<<<< HEAD
+
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginTop="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/page_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_page_movie_genre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/B2"/>
+
 
     <FrameLayout
         android:id="@+id/fragment_container"
-<<<<<<< HEAD
+
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginTop="200dp"
@@ -37,13 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/page_title"
-        app:layout_constraintStart_toStartOf="parent"
 
-        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,20 +39,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/B2"/>
 
-=======
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-       />
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        />
->>>>>>> 29be78f45be8614a8edc677d84713f6b85b69bb0
 
-
->>>>>>> a2eb95640bd3bb054bb905acf93d682706ad9875
 </androidx.constraintlayout.widget.ConstraintLayout>
