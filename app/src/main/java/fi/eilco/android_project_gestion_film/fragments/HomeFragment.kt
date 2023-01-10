@@ -24,6 +24,6 @@ class HomeFragment : Fragment() {
             verticalRecyclerView.adapter = MovieAdapter()
             print("Different de nulll")
         }
-        return view 
+        return view
     }
 }
