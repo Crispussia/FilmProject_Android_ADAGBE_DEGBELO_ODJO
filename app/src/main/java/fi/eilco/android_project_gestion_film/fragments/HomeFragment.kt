@@ -1,10 +1,15 @@
 package fi.eilco.android_project_gestion_film.fragments
 
 import android.os.Bundle
+<<<<<<< HEAD
+=======
+import android.util.Log
+>>>>>>> a2eb95640bd3bb054bb905acf93d682706ad9875
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+<<<<<<< HEAD
 import androidx.recyclerview.widget.RecyclerView
 import fi.eilco.android_project_gestion_film.R
 import fi.eilco.android_project_gestion_film.adapter.MovieAdapter
@@ -27,3 +32,87 @@ class HomeFragment : Fragment() {
         return view
     }
 }
+=======
+import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
+import fi.eilco.android_project_gestion_film.MainActivity
+import fi.eilco.android_project_gestion_film.R
+import fi.eilco.android_project_gestion_film.adapter.MovieAdapter
+import fi.eilco.android_project_gestion_film.adapter.RootModel
+import kotlinx.coroutines.launch
+import okhttp3.*
+import java.io.IOException
+
+class HomeFragment ( private val context: MainActivity): Fragment() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater?.inflate(R.layout.fragment_home, container, false)
+        //recupérer le recycler view
+        val recycler = view?.findViewById<RecyclerView>(R.id.recycler)
+        Log.d("recycler : ","tttttttttttttttttttttttttttttt")
+
+        lifecycleScope.launch {
+            if (recycler != null) {
+                getData(recycler)
+            }
+        }
+
+        Log.d("recycler : ","lllllllllllllllllllllllllll")
+
+
+
+        return view
+    }
+
+    private fun getData(recyclerView: RecyclerView) {
+
+        var genreId: Int = 0
+        var genreName: String = ""
+        setFragmentResultListener("secret") { key, bundle ->
+            genreId = bundle.getInt("genre_id")
+
+            setFragmentResultListener("secret2") { key, bundle ->
+                genreName = bundle.getString("genre_name").toString()
+
+                Log.d("hhjjjjjjjjjjjj", "eeeeeeeemmmmmmmmmmmmmmmm " + genreId.toString())
+                Log.d("hhjjjjjjjjjjjj", "eeeeeeeemmmmmmmmmmmmmmmm " + genreName)
+
+
+                val client = OkHttpClient()
+                val request = Request.Builder()
+                    .url("https://api.themoviedb.org/3/discover/movie?api_key=2174d146bb9c0eab47529b2e77d6b526&with_genres=" + genreId.toString())
+                    .build()
+                client.newCall(request).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+
+                        e.printStackTrace()
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        val body = response.body?.string()
+                        println(body)
+                        val gson = GsonBuilder().create()
+                        val data = gson.fromJson(body, RootModel::class.java)
+                        Log.d("hhjjjjjjjjjjjj", "eeeeeeeeeeeeeeeeeeeeeee")
+
+                        //Set adapter and recycler view on UI with values get from http request
+                        activity?.runOnUiThread {
+                            recyclerView.layoutManager = LinearLayoutManager(context)
+
+                            val adapter = MovieAdapter(context, data.results)
+                            recyclerView.adapter = adapter
+                        }
+
+                    }
+
+                })
+
+
+            }
+        }
+    }
+}
+>>>>>>> a2eb95640bd3bb054bb905acf93d682706ad9875
